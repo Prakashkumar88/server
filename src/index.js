@@ -16,8 +16,8 @@ app.use(
 
 app.use(express.json());
 
-// ✅ Correct Better Auth mount
-app.all("/api/auth/*", toNodeHandler(auth));
+// ✅ CORRECT mounting (NO wildcard)
+app.use("/api/auth", toNodeHandler(auth));
 
 app.get("/health", (_, res) => {
   res.send("OK");
