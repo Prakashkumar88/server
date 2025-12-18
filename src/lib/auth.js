@@ -15,6 +15,18 @@ export const auth = betterAuth({
     process.env.BETTER_AUTH_URL,
   ].filter(Boolean),
 
+  // 🔴 THIS IS THE MISSING PART
+  cookies: {
+    session: {
+      sameSite: "none",
+      secure: true,
+    },
+    csrf: {
+      sameSite: "none",
+      secure: true,
+    },
+  },
+
   plugins: [
     deviceAuthorization({
       verificationUri: "/device",
