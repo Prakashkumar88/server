@@ -4,6 +4,7 @@ import { deviceAuthorization } from "better-auth/plugins";
 import prisma from "./db.js";
 
 export const auth = betterAuth({
+  debug: true,
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
