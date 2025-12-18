@@ -15,8 +15,7 @@ import prisma from "../../../lib/db.js";
 
 dotenv.config();
 
-const DEMO_URL = process.env.LAPRAS_SERVER_URL || "http://localhost:3005";
-// console.log("DEMO_URL:", DEMO_URL);
+const DEMO_URL = process.env.LAPRAS_SERVER_URL;
 const CLIENT_ID = process.env.GITHUB_CLIENT_ID;
 const CONFIG_DIR = path.join(os.homedir(), ".better-auth");
 const TOKEN_FILE = path.join(CONFIG_DIR, "token.json");

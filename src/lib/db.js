@@ -1,21 +1,17 @@
 import "../env.js";
-import pkg from "@prisma/client";
-const { PrismaClient } = pkg;
+import { PrismaClient } from "@prisma/client";
 import { Pool } from "pg";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 const globalForPrisma = globalThis;
-// console.log("DATABASE_URL =", process.env.DATABASE_URL);
 
-// Create a pg pool
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
 });
 
-// Create Prisma adapter
 const adapter = new PrismaPg(pool);
 
-// Lazy singleton
 export const prisma =
   globalForPrisma.prisma ||
   new PrismaClient({
