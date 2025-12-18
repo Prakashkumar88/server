@@ -24,12 +24,12 @@ app.get("/health", (req, res) => {
   res.send("OK");
 });
 
-app.get("/api/me", async (req, res) => {
-  const session = await auth.getSession({
-    headers: fromNodeHeaders(req.headers),
-  });
-  res.json(session);
-});
+// app.get("/api/me", async (req, res) => {
+//   const session = await auth.getSession({
+//     headers: fromNodeHeaders(req.headers),
+//   });
+//   res.json(session);
+// });
 
 app.get("/device", (req, res) => {
   const { user_code } = req.query;
