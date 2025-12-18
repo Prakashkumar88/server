@@ -10,6 +10,7 @@ const app = express();
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"], 
     credentials: true,
   })
 );
@@ -17,9 +18,9 @@ app.use(
 app.use(express.json());
 
 // ✅ CORRECT mounting (NO wildcard)
-app.use("/api/auth", toNodeHandler(auth));
+app.all("/api/auth/*splat", toNodeHandler(auth));
 
-app.get("/health", (_, res) => {
+app.get("/health", (req, res) => {
   res.send("OK");
 });
 
