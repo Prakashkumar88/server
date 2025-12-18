@@ -3,7 +3,7 @@ import "./env.js";
 import express from "express";
 import cors from "cors";
 import { auth } from "./lib/auth.js";
-import { fromNodeHeaders, toNodeHandler } from "better-auth/node";
+import { fromNodeHeaders, toNodeHandler } from "better-auth/express";
 
 const app = express();
 
@@ -16,7 +16,8 @@ app.use(
 
 app.use(express.json());
 
-app.all("/api/auth/*splat", toNodeHandler(auth));
+// ✅ Correct Better Auth mounting
+app.all("/api/auth/*", toNodeHandler(auth));
 
 app.get("/health", (_, res) => {
   res.send("OK");
