@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { toNodeHandler } from "better-auth/express";
+import { toNodeHandler } from "better-auth/node";
 import { auth } from "./lib/auth.js";
 
 const app = express();
@@ -14,7 +14,7 @@ app.use(
 
 app.use(express.json());
 
-// ✅ MUST be before app.listen
+// ✅ THIS MUST EXIST
 app.all("/api/auth/*", toNodeHandler(auth));
 
 app.get("/health", (_req, res) => {
