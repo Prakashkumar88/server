@@ -11,7 +11,6 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-// Create Prisma adapter
 const adapter = new PrismaPg(pool);
 
 // Lazy singleton
