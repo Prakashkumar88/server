@@ -11,7 +11,7 @@ app.set("trust proxy", 1);
 
 app.use(
   cors({
-    origin: "https://client-aj2q.vercel.app", 
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST", "PUT", "DELETE"], 
     credentials: true, 
   })
