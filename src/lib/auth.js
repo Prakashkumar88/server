@@ -15,7 +15,7 @@ export const auth = betterAuth({
   },
   basePath: "/api/auth",
   trustedOrigins: [
-    "https://client-aj2q.vercel.app",
+    "https://lapras-cli.vercel.app",
     "https://server-production-a027.up.railway.app",
   ],
   plugins: [
