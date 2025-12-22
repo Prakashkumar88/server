@@ -11,6 +11,7 @@ export const auth = betterAuth({
     secure: true,       // REQUIRED (https)
     sameSite: "none",   // REQUIRED (cross-site OAuth)
     domain: ".railway.app",
+    path: "/",
   },
   basePath: "/api/auth",
   trustedOrigins: [
