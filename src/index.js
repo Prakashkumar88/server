@@ -7,11 +7,10 @@ import { fromNodeHeaders, toNodeHandler } from "better-auth/node";
 
 
 const app = express();
-app.set("trust proxy", 1);
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: "http://localhost:3000", 
     methods: ["GET", "POST", "PUT", "DELETE"], 
     credentials: true, 
   })
@@ -34,7 +33,7 @@ app.get('/api/me', async(req, res) => {
 
 app.get("/device", async (req, res) => {
   const { user_code } = req.query; // Fixed: should be req.query, not req.params
-  res.redirect(`https://lapras-cli.vercel.app/device?user_code=${user_code}`);
+  res.redirect(`http://localhost:3000/device?user_code=${user_code}`);
 });
 
 app.listen(process.env.PORT || 3005, () => {

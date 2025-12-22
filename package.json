@@ -1,5 +1,5 @@
 {
-  "name": "lapras",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
@@ -11,10 +11,6 @@
     "dev": "nodemon src/index.js",
     "start": "node src/index.js"
   },
-  "files": [
-    "src/cli",
-    "src/index.js"
-  ],
   "keywords": [],
   "author": "",
   "license": "ISC",

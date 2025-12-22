@@ -9,7 +9,7 @@ export const auth = betterAuth({
     provider: "postgresql",
   }),
   basePath: "/api/auth",
-  trustedOrigins: ["https://lapras-cli.vercel.app"],
+  trustedOrigins: ["http://localhost:3000"],
   plugins: [
     deviceAuthorization({ 
       verificationUri: "/device", 
