@@ -1,26 +1,41 @@
+import "./env.js"; 
+
 import express from "express";
 import cors from "cors";
-import { toNodeHandler } from "better-auth/node";
 import { auth } from "./lib/auth.js";
+import { fromNodeHeaders, toNodeHandler } from "better-auth/node";
+
 
 const app = express();
 
 app.use(
   cors({
-    origin: "https://client-aj2q.vercel.app",
-    credentials: true,
+    origin: "https://client-aj2q.vercel.app", 
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+    credentials: true, 
   })
 );
 
+app.all("/api/auth/*splat", toNodeHandler(auth));
+
 app.use(express.json());
 
-// ✅ THIS MUST EXIST
-app.all("/api/auth/*", toNodeHandler(auth));
+app.get('/health', (req, res) => {
+  res.send('OK');
+});
 
-app.get("/health", (_req, res) => {
-  res.send("OK");
+app.get('/api/me', async(req, res) => {
+  const session = await auth.getSession({
+    headers: fromNodeHeaders(req.headers),
+  });
+  return res.json(session);
+});
+
+app.get("/device", async (req, res) => {
+  const { user_code } = req.query; // Fixed: should be req.query, not req.params
+  res.redirect(`https://client-aj2q.vercel.app/device?user_code=${user_code}`);
 });
 
 app.listen(process.env.PORT || 3005, () => {
-  console.log("Server running");
+  console.log(`Server is running on port https://localhost:${process.env.PORT || 3005}`);
 });
