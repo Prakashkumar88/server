@@ -11,6 +11,7 @@ export const auth = betterAuth({
   cookies: {
     sameSite: "none", // REQUIRED for cross-site OAuth
     secure: true, // REQUIRED for HTTPS
+    domain: "server-production-a027.up.railway.app", // Set your domain here
   },
   trustedOrigins: ["https://lapras-cli.vercel.app"],
   plugins: [
