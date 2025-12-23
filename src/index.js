@@ -16,6 +16,12 @@ app.use(
     credentials: true, 
   })
 );
+app.use((req, res, next) => {
+  console.log("secure:", req.secure);
+  console.log("proto:", req.headers["x-forwarded-proto"]);
+  next();
+});
+
 
 app.all("/api/auth/*splat", toNodeHandler(auth));
 
