@@ -10,15 +10,16 @@ export const auth = betterAuth({
   basePath: "/api/auth",
   cookies: {
     state: {
-      sameSite: "none",
-      secure: true,
+      sameSite: "lax",        // 🔥 IMPORTANT
+      secure: process.env.NODE_ENV === "production",
     },
     sessionToken: {
-      sameSite: "none",
-      secure: true,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
     },
   },
   trustedOrigins: [
+    "http://localhost:3000",
     "https://lapras-cli.vercel.app",
     "https://server-production-a027.up.railway.app",
   ],
