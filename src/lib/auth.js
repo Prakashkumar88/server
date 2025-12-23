@@ -18,7 +18,11 @@ export const auth = betterAuth({
       secure: true,
     },
   },
-  trustedOrigins: ["https://lapras-cli.vercel.app"],
+  trustedOrigins: [
+    "https://lapras-cli.vercel.app",
+    "https://server-production-a027.up.railway.app",
+  ],
+
   plugins: [
     deviceAuthorization({
       verificationUri: "/device",
